@@ -31,7 +31,6 @@ app.get("/", (req, res) => {
     res.send("Home Pages");
 });
 
-// Добавьте эту строку, чтобы приложение могло слушать запросы
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

@@ -18,7 +18,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.use( // <-- ИСПРАВЛЕНО: app.unsubscribe заменено на app.use
+app.use(
     cors({
         origin: ["http://localhost:3000", "Your website domain url"],
         credentials: true,

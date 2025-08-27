@@ -18,7 +18,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.unsubscribe(
+app.use( // <-- ИСПРАВЛЕНО: app.unsubscribe заменено на app.use
     cors({
         origin: ["http://localhost:3000", "Your website domain url"],
         credentials: true,
@@ -29,4 +29,9 @@ const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
     res.send("Home Pages");
+});
+
+// Добавьте эту строку, чтобы приложение могло слушать запросы
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

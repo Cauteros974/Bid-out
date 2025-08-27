@@ -9,15 +9,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-
-app.use(
-    express.urlencoded({
-        extended: false,
-    })
-);
-
+app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use(
     cors({
         origin: ["http://localhost:3000", "Your website domain url"],
@@ -25,12 +18,16 @@ app.use(
     })
 );
 
-const PORT = process.env.PORT || 5000;
-
 app.get("/", (req, res) => {
     res.send("Home Pages");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.DATABASE_CLOUD)
+.then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+})
+.catch((err) => console.log(err));

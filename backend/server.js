@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
+const userRoute = require("./routes/userRoute");
 const app = express();
 
 app.use(express.json());
@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+app.use("/api/users", userRoute)
 
 mongoose.connect(process.env.DATABASE_CLOUD)
 .then(() => {
